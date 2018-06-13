@@ -1,5 +1,6 @@
 const graphql = require('graphql')
 const _ = require('lodash')
+const axios = require('axios')
  const {
      GraphQLObjectType,
      GraphQLString,
@@ -29,12 +30,14 @@ const users = [
              type: UserType,
              args: {id: {type: GraphQLString}},
              resolve(parentValue, args) { 
-                return _.find(users, {id: args.id})
+                return axios.get(`http://localhost:3000/users/${args.id}`)
+                .then(resp => resp.data)    // As data is nested in {data}
+                .then(data => data)
              }
          }
      }
  })
 
  module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery 
 })
