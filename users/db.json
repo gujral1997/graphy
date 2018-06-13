@@ -1,8 +1,8 @@
 {
     "users": [
-        {"id": "1", "firstName": "Bill", "age": 20, "companyId": "1"},
-        {"id": "2", "firstName": "Stacy", "age": 22, "companyId": "1"},
-        {"id": "3", "firstName": "Billy", "age": 22, "companyId": "2"}
+        {"id": "1", "firstName": "Bill", "age": 20, "companyId": "10"},
+        {"id": "2", "firstName": "Stacy", "age": 22, "companyId": "10"},
+        {"id": "3", "firstName": "Billy", "age": 22, "companyId": "11"}
     ],
     "companies": [
         {"id": "10", "name": "Apple", "description": "iphone"},
