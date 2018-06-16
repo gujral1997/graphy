@@ -5,6 +5,7 @@ import {Link} from 'react-router'
 import LyricCreate from './LyricCreate'
 
 class SongDetail extends Component {
+
     render() {
 
         const {song} = this.props.data;
@@ -14,7 +15,7 @@ class SongDetail extends Component {
             <div>
                 <Link to="/">Back</Link>
                <h3>{song.title}</h3>
-               <LyricCreate />
+               <LyricCreate songId={this.props.params.id} /> {/*Only SongDetail has song id because of react router*/}
             </div>
         )
     }
