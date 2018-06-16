@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import gql from 'graphql-tag'
 import {graphql} from 'react-apollo'
+import {Link, hashHistory} from 'react-router'
+import query from '../queries/fetchSongs'
+import { mutations } from 'apollo-client/mutations/store';
 
 class SongCreate extends Component {
     constructor(props) {
@@ -13,8 +16,10 @@ class SongCreate extends Component {
         this.props.mutate({
             variables: {
                 title: this.state.title
-            }
-        })
+                 // as key and value are equal
+            },
+            refetchQueries: [{query}]
+        }).then(()=> hashHistory.push('/'))
         
     }
 
@@ -35,12 +40,11 @@ class SongCreate extends Component {
 }
 
 const mutation = gql`
-    mutation AddSong($title: String){
-        addSong(title: $title) {
-            title
-        }
+  mutation AddSong($title: String){
+    addSong(title: $title) {
+      title
     }
+  }
 `
-
 export default graphql(mutation)(SongCreate)
 
